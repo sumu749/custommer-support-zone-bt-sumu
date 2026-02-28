@@ -141,7 +141,7 @@ const MainSection = ({
                                 {resolvedList.map((r) => (
                                     <div
                                         key={r.id}
-                                        className="text-sm text-gray-700 bg-white p-2 rounded shadow-sm"
+                                        className="text-sm text-gray-700 bg-[#E0E7FF] p-2 rounded shadow-sm"
                                     >
                                         {r.title}
                                     </div>
