@@ -1,16 +1,19 @@
-# React + Vite
+### Customer Support Zone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+What is JSX, and why is it used?
+JSX is an extension to javascript syntax. It allows writing code that look similar html, and that similarity makes it feel pretty natural in the context of a front end UI library. JSX is very commonly used with React, though technically you could do react without JSX (it would be combersome, so i don't recommend it), and the JSX syntax can be used with other libraries than react (this isn't common).
 
-Currently, two official plugins are available:
+In the context of react, a JSX element is a shorthand for calling React.createElement. createElement is the code that React uses for describing what should be on the page. For example, the following JSX:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<div>Hello World</div>
+Transpiles to this code:
 
-## React Compiler
+React.createElement("div", null, "Hello World");
+Which will return an object that looks roughly like this:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+{
+type: 'div',
+props: {
+children: 'Hello World'
+}
+}
