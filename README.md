@@ -1,19 +1,77 @@
 ### Customer Support Zone
 
-What is JSX, and why is it used?
-JSX is an extension to javascript syntax. It allows writing code that look similar html, and that similarity makes it feel pretty natural in the context of a front end UI library. JSX is very commonly used with React, though technically you could do react without JSX (it would be combersome, so i don't recommend it), and the JSX syntax can be used with other libraries than react (this isn't common).
+#### What is JSX, and why is it used?
 
-In the context of react, a JSX element is a shorthand for calling React.createElement. createElement is the code that React uses for describing what should be on the page. For example, the following JSX:
+JSX is a syntax extension for JavaScript that allows you to write HTML‑like code inside React components. The markup looks familiar and improves readability, making UI definitions more natural. When React processes it, JSX is transformed into `React.createElement` calls behind the scenes:
 
+```jsx
 <div>Hello World</div>
-Transpiles to this code:
+```
 
+is compiled to:
+
+```js
 React.createElement("div", null, "Hello World");
-Which will return an object that looks roughly like this:
+```
 
+That call returns a plain object representing a virtual DOM node:
+
+```js
 {
-type: 'div',
-props: {
-children: 'Hello World'
+  type: 'div',
+  props: {
+    children: 'Hello World'
+  }
 }
-}
+```
+
+JSX isn’t limited to React, but it’s most commonly used with it because it simplifies component creation and lets you embed JavaScript expressions directly in markup.
+
+---
+
+#### What is the difference between State and Props?
+
+| Concept   | Defined by           | Mutable? | Scope                                       |
+| --------- | -------------------- | -------- | ------------------------------------------- |
+| **Props** | Parent component     | No       | Passed down to children; read-only          |
+| **State** | The component itself | Yes      | Managed internally and can change over time |
+
+- **Props** flow from parent to child and cannot be modified by the receiving component.
+- **State** is local data that the component controls, typically updated via hooks like `useState` or in class components with `this.setState`.
+
+---
+
+#### What is the useState hook, and how does it work?
+
+`useState` is a React hook for storing state in functional components.
+
+```jsx
+const [count, setCount] = useState(0);
+```
+
+- The hook returns a pair: the current value and a setter function.
+- Calling the setter updates the state and triggers a re-render.
+- Each `useState` call creates an independent state slot; order must remain consistent between renders.
+
+---
+
+#### How can you share state between components in React?
+
+1. **Lift state up** – move shared state to the closest common ancestor and pass it down via props.
+2. **Context API** – create a context provider so any descendant can access the value without prop drilling.
+3. **State management libraries** – Redux, MobX, Zustand, etc., offer global stores.
+4. **URL/query parameters or services** – useful for persisting state across pages or sessions.
+
+---
+
+#### How is event handling done in React?
+
+React uses camelCase event names and passes functions as handlers.
+
+```jsx
+<button onClick={() => setCount(count + 1)}>Increment</button>
+```
+
+- The event object is a `SyntheticEvent` that normalizes behavior across browsers.
+- You can call `event.preventDefault()` or `event.stopPropagation()` just like in plain DOM.
+- Bind `this` in class components or use arrow functions in functional components.
