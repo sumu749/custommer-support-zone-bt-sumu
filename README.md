@@ -25,16 +25,9 @@ That call returns a plain object representing a virtual DOM node:
 }
 ```
 
-JSX isn’t limited to React, but it’s most commonly used with it because it simplifies component creation and lets you embed JavaScript expressions directly in markup.
-
 ---
 
 #### What is the difference between State and Props?
-
-| Concept   | Defined by           | Mutable? | Scope                                       |
-| --------- | -------------------- | -------- | ------------------------------------------- |
-| **Props** | Parent component     | No       | Passed down to children; read-only          |
-| **State** | The component itself | Yes      | Managed internally and can change over time |
 
 - **Props** flow from parent to child and cannot be modified by the receiving component.
 - **State** is local data that the component controls, typically updated via hooks like `useState` or in class components with `this.setState`.
