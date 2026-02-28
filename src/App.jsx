@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "./Components/Navbar/Navbar";
 import Hero from "./Components/Hero/hero";
 import MainSection from "./Components/MainSection/MainSection";
+import Footer from "./Components/Footer/Footer";
 import ticketsData from "./data/tickets.json";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -46,6 +47,7 @@ function App() {
                 onCompleteTask={handleCompleteTask}
                 resolvedList={resolvedList}
             />
+            <Footer />
             <ToastContainer
                 position="top-right"
                 autoClose={2500}
